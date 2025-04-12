@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
@@ -36,3 +37,65 @@
     transform: rotate(360deg);
   }
 }
+/*
+.buttons {
+  transition: background-color 0.1s linear !important;
+}
+.buttons:hover {
+  background-color: #295c5a !important;
+  color: white !important;
+}
+
+.todosSection::-webkit-scrollbar {
+  width: 10px;
+  background-color: #282c34;
+  border-radius: 10px;
+}
+.todosSection::-webkit-scrollbar-thumb {
+  height: 20px !important;
+  background-color: #19a7ce;
+  border-radius: 10px;
+  cursor: pointer;
+}*/
+/*===== START CUSTOM FONTS ====*/
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-ExtraBold.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-ExtraLight.ttf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: montserrat;
+  src: url("../public/Fonts/Montserrat/Montserrat-SemiBold.ttf");
+  font-weight: 600;
+}
+/*===== END CUSTOM FONTS ====*/

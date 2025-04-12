@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Todo-List-Project%20/static/css/main.35aa3c5b.css",
+    "main.js": "/Todo-List-Project%20/static/js/main.994117c7.js",
+    "static/js/453.efd5d853.chunk.js": "/Todo-List-Project%20/static/js/453.efd5d853.chunk.js",
+    "static/media/Montserrat-ExtraBold.ttf": "/Todo-List-Project%20/static/media/Montserrat-ExtraBold.757982f4c71159f6bdc2.ttf",
+    "static/media/Montserrat-Black.ttf": "/Todo-List-Project%20/static/media/Montserrat-Black.1984e065d55352d2a119.ttf",
+    "static/media/Montserrat-Bold.ttf": "/Todo-List-Project%20/static/media/Montserrat-Bold.3530bfc1b50b41bdc29d.ttf",
+    "static/media/Montserrat-SemiBold.ttf": "/Todo-List-Project%20/static/media/Montserrat-SemiBold.38e62f01be69b2e02e29.ttf",
+    "static/media/Montserrat-Regular.ttf": "/Todo-List-Project%20/static/media/Montserrat-Regular.cfbf0da06d33097e6d0a.ttf",
+    "static/media/Montserrat-Light.ttf": "/Todo-List-Project%20/static/media/Montserrat-Light.afe0a608093579a47b06.ttf",
+    "static/media/Montserrat-Medium.ttf": "/Todo-List-Project%20/static/media/Montserrat-Medium.d3f3d769c2fc1af5c0b4.ttf",
+    "static/media/Montserrat-ExtraLight.ttf": "/Todo-List-Project%20/static/media/Montserrat-ExtraLight.a3f246d90dd5fd1e5584.ttf",
+    "index.html": "/Todo-List-Project%20/index.html",
+    "main.35aa3c5b.css.map": "/Todo-List-Project%20/static/css/main.35aa3c5b.css.map",
+    "main.994117c7.js.map": "/Todo-List-Project%20/static/js/main.994117c7.js.map",
+    "453.efd5d853.chunk.js.map": "/Todo-List-Project%20/static/js/453.efd5d853.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35aa3c5b.css",
+    "static/js/main.994117c7.js"
+  ]
+}

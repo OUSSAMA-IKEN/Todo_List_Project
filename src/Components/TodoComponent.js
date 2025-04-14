@@ -11,28 +11,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useContext } from "react";
 import { todoListContext } from "../Context/TodoListContext";
 
-// * ====== Dialog Delete ====== */
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
-
-/* ====== Dialog Edit ====== */
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import TextField from "@mui/material/TextField";
-
-export default function Todo({ Todo }) {
+export default function Todo({
+  Todo,
+  hundleOpenEditModalProp,
+  hundleOpenDeleteModalProp
+}) {
   /* ====== Context ====== */
   const { task, setTask } = useContext(todoListContext);
-
-  /* ======== State ======== */
-  const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
-  const [openEditModal, setOpenEditModal] = React.useState(false);
-  const [editTask, seteditTask] = React.useState({
-    title: Todo.title,
-    description: Todo.description
-  });
 
   /* ======== hundle Check Task  ======== */
   const hundleCheckClick = () => {
@@ -44,127 +29,11 @@ export default function Todo({ Todo }) {
     });
     setTask(updatedTask);
     // update Data in local storage
-    localStorage.setItem("task",JSON.stringify(updatedTask));
-  };
-
-  /* ======== hundle Delete Task  ======== */
-  const handleClickOpen = () => {
-    setOpenDeleteModal(true);
-  };
-
-  const hundleDeleteclick = () => {
-    const updatedTask = task.filter((task) => task.id !== Todo.id);
-    setTask(updatedTask);
-    // update Data in local storage
     localStorage.setItem("task", JSON.stringify(updatedTask));
-  };
-
-  const handleAgree = () => {
-    hundleDeleteclick();
-    setOpenDeleteModal(false);
-  };
-  const handleCloseDisagree = () => {
-    setOpenDeleteModal(false);
-  };
-
-  // * ======== hundle Edit Task  ======== */
-  const hundleEditeTask = () => {
-    const updatedTask = task.map((t) => {
-      if (t.id === Todo.id) {
-        return {
-          ...t,
-          title: editTask.title,
-          description: editTask.description
-        };
-      }
-      return t;
-    });
-    setTask(updatedTask);
-    // update Data in local storage
-    localStorage.setItem("task", JSON.stringify(updatedTask));
-    setOpenEditModal(false);
-  };
-
-  const hundleOpenEditModal = () => {
-    setOpenEditModal(true);
-  };
-
-  const hundleCloseEditModal = () => {
-    setOpenEditModal(false);
   };
 
   return (
     <Container>
-      {/* ========= Start Edit Modal ========= */}
-      <Dialog
-        open={openEditModal}
-        onClose={hundleCloseEditModal} // when the user click outside the modal
-        style={{
-          width: "90%",
-          margin: "auto"
-        }}
-      >
-        <DialogTitle> Edit Information</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Update the details below and click Save to apply the changes. Make
-            sure all fields are correct before submitting.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="name"
-            name="email"
-            label="Task Name"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={editTask.title}
-            onChange={(e) => {
-              seteditTask({ ...editTask, title: e.target.value });
-            }}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="name"
-            name="email"
-            label="Task Description"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={editTask.description}
-            onChange={(e) => {
-              seteditTask({ ...editTask, description: e.target.value });
-            }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={hundleCloseEditModal}>Cancel</Button>
-          <Button onClick={hundleEditeTask}>Apply</Button>
-        </DialogActions>
-      </Dialog>
-      {/* ========= End Edit Modal ========= */}
-
-      {/*  ======== Start Delete Modal ========  */}
-      <Dialog
-        open={openDeleteModal}
-        onClose={handleCloseDisagree} // when the user click outside the modal
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Are You Sure?"}</DialogTitle>
-
-        <DialogActions>
-          <Button onClick={handleCloseDisagree}>Disagree</Button>
-          <Button onClick={handleAgree} autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
-      {/*  ======== End Delete Modal ========  */}
       <Card
         sx={{ minWidth: 275, backgroundColor: "#191b1f", borderRadius: "12px" }}
         style={{ marginTop: "10px" }}
@@ -178,7 +47,7 @@ export default function Todo({ Todo }) {
                   color: "white",
                   textAlign: "left",
                   fontWeight: "normal",
-                  textDecoration:Todo.completed?"line-through":"none",
+                  textDecoration: Todo.completed ? "line-through" : "none"
                 }}
               >
                 {Todo.title}
@@ -222,7 +91,7 @@ export default function Todo({ Todo }) {
               </IconButton>
 
               {/* edit Button */}
-              
+
               <IconButton
                 className="buttons"
                 aria-label="edit"
@@ -231,7 +100,9 @@ export default function Todo({ Todo }) {
                   backgroundColor: "whitesmoke",
                   border: "solid 3px #66B3FF "
                 }}
-                onClick={hundleOpenEditModal}
+                onClick={() => {
+                  hundleOpenEditModalProp(Todo);
+                }}
               >
                 <EditIcon />
               </IconButton>
@@ -245,8 +116,8 @@ export default function Todo({ Todo }) {
                   backgroundColor: "whitesmoke",
                   border: "solid 3px #66B3FF "
                 }}
-                onClick={(e) => {
-                  handleClickOpen();
+                onClick={() => {
+                  hundleOpenDeleteModalProp(Todo);
                 }}
               >
                 <DeleteIcon />

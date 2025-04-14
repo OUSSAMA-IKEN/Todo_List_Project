@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { todoListContext } from "./Context/TodoListContext";
 import { useState } from "react";
 import { useEffect } from "react";
+import Snackbars from "./Components/SnackBar";
+import { SnackBarContext } from "./Context/SnackBarContext";
 
 // theme
 const theme1 = createTheme({
@@ -65,6 +67,9 @@ const theme1 = createTheme({
 
 function App() {
   const [task, setTask] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+
   // use effect getting Data fromlocalStorage
   useEffect(() => {
     const localStorageTask = localStorage.getItem("task") ?? "[]";
@@ -73,21 +78,33 @@ function App() {
     }
   }, []);
 
+  // hundle Snack Bar
+  const showSnackbar = (messageParam) => {
+    setMessage(messageParam);
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+  };
+
   return (
     <ThemeProvider theme={theme1}>
       <todoListContext.Provider value={{ task, setTask }}>
-        <div
-          className="App"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-            backgroundColor: "#191b1f"
-          }}
-        >
-          <TodoList />
-        </div>
+        <SnackBarContext.Provider value={{ showSnackbar }}>
+          <div
+            className="App"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              backgroundColor: "#191b1f"
+            }}
+          >
+            <TodoList />
+          </div>
+        </SnackBarContext.Provider>
+        <Snackbars open={open} messageProp={message} />
       </todoListContext.Provider>
     </ThemeProvider>
   );

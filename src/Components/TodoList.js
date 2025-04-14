@@ -129,7 +129,6 @@ export default function TodoList() {
   const handleClickOpen = (todoClicked) => {
     setOpenDeleteModal(true);
     setSelectedTodo(todoClicked);
-
   };
 
   const hundleDeleteclick = () => {
@@ -138,7 +137,6 @@ export default function TodoList() {
     // update Data in local storage
     localStorage.setItem("task", JSON.stringify(updatedTask));
     showSnackbar("Task has been removed seccessfuly !");
-
   };
 
   const handleAgree = () => {
